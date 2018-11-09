@@ -1,0 +1,25 @@
+<p>
+  course-create works!
+</p>
+<div>
+  <ul>
+    <li>Name:<input [(ngModel)]="data.name" placeholder="name"></li>
+    <li>Institution:<input [(ngModel)]="data.institution" placeholder="institution"></li>
+    <li>Instructor: <select [(ngModel)]="data.instructor" (change)="instructorChange()">
+      <option *ngFor="let newInstructor of allInstructors" [ngValue]="newInstructor.id">
+        {{newInstructor.attributes.field_first_name}} {{newInstructor.attributes.name}}
+      </option>
+    </select></li>
+    <li>Current students:
+      <ul *ngIf="data.students">
+        <li *ngFor="let student of data.students; trackBy: trackStudent"> {{student.attributes.field_first_name}}{{student.attributes.name}} <button (click)=removeStudent(student)>remove</button></li>
+      </ul>
+    </li>
+    <li>All students:
+      <ul *ngIf="avStudents">
+        <li *ngFor="let avstudent of avStudents; trackBy: trackStudent"> {{  avstudent.attributes.field_first_name}}{{ avstudent.attributes.name}} <button (click)=addStudent(avstudent)>add</button></li>
+      </ul>
+    </li>
+  </ul>
+  <button (click)="saveCourse()">save</button>
+</div>

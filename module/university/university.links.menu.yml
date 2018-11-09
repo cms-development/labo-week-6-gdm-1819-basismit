@@ -1,0 +1,42 @@
+
+# Course menu items definition
+entity.course.collection:
+  title: 'Course list'
+  route_name: entity.course.collection
+  description: 'List Course entities'
+  parent: system.admin_structure
+  weight: 100
+
+course.admin.structure.settings:
+  title: 'Course settings'
+  description: 'Configure Course entities'
+  route_name: course.settings
+  parent: system.admin_structure
+
+# Instructor menu items definition
+entity.instructor.collection:
+  title: 'Instructor list'
+  route_name: entity.instructor.collection
+  description: 'List Instructor entities'
+  parent: system.admin_structure
+  weight: 100
+
+instructor.admin.structure.settings:
+  title: 'Instructor settings'
+  description: 'Configure Instructor entities'
+  route_name: instructor.settings
+  parent: system.admin_structure
+
+# Student menu items definition
+entity.student.collection:
+  title: 'Student list'
+  route_name: entity.student.collection
+  description: 'List Student entities'
+  parent: system.admin_structure
+  weight: 100
+
+student.admin.structure.settings:
+  title: 'Student settings'
+  description: 'Configure Student entities'
+  route_name: student.settings
+  parent: system.admin_structure

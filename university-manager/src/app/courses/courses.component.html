@@ -1,0 +1,7 @@
+<p>
+  courses works!
+</p>
+<a routerLink="/courses/create">New Course</a>
+<div class="collection">
+  <a *ngFor="let course of courses" routerLink="/courses/{{course.attributes.uuid}}" class="collection-item">{{course.attributes.name}}</a>
+</div>

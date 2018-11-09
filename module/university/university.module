@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains university.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function university_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the university module.
+    case 'help.page.university':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('University module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function university_theme() {
+  return [
+    'university' => [
+      'render element' => 'children',
+    ],
+  ];
+}

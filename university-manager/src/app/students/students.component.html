@@ -1,0 +1,7 @@
+<p>
+  students works!
+</p>
+<a routerLink="/students/create">New Student</a>
+<div class="collection">
+  <a *ngFor="let student of students" routerLink="/students/{{student.attributes.uuid}}" class="collection-item">{{student.attributes.field_first_name}} {{student.attributes.name}}</a>
+</div>

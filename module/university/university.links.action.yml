@@ -1,0 +1,15 @@
+entity.course.add_form:
+  route_name: entity.course.add_form
+  title: 'Add Course'
+  appears_on:
+    - entity.course.collection
+entity.instructor.add_form:
+  route_name: entity.instructor.add_form
+  title: 'Add Instructor'
+  appears_on:
+    - entity.instructor.collection
+entity.student.add_form:
+  route_name: entity.student.add_form
+  title: 'Add Student'
+  appears_on:
+    - entity.student.collection

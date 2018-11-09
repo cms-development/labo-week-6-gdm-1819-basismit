@@ -1,0 +1,7 @@
+<p>
+  instructors works!
+</p>
+<a routerLink="/instructors/create">New Instructor</a>
+<div class="collection">
+  <a *ngFor="let instructor of instructors" routerLink="/instructors/{{instructor.attributes.uuid}}" class="collection-item">{{instructor.attributes.field_first_name}} {{instructor.attributes.name}}</a>
+</div>

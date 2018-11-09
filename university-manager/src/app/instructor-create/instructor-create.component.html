@@ -1,0 +1,24 @@
+<p>
+  instructor-create works!
+</p>
+<div>
+  <ul >
+      <li>First name: <input [(ngModel)]="data.field_first_name" placeholder="first name"></li>
+      <li>Last name: <input [(ngModel)]="data.name" placeholder="name"></li>
+      <li>Rank:
+        <select [(ngModel)]="data.field_academic_rank">
+          <option *ngFor="let rank of allRanks" [ngValue]="rank.value">{{rank.name}}</option>
+        </select>
+        <li>Current titles:
+            <ul>
+              <li *ngFor="let title of data.field_academic_title; trackBy: trackTitle"> {{getTitleName(title)}} <button (click)=removeTitle(title)>remove</button></li>
+            </ul>
+          </li>
+          <li>Other titles:
+            <ul *ngIf="titlesLeft">
+              <li *ngFor="let title of titlesLeft; trackBy: trackTitle"> {{ title.name }} <button (click)=addTitle(title.value)>add</button></li>
+            </ul>
+          </li>
+  </ul>
+  <button (click)="saveInstructor()">save</button>
+</div>

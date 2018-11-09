@@ -1,0 +1,25 @@
+<p>
+  student-detail works!
+</p>
+<div *ngIf="!editMode">
+  <ul *ngIf="student">
+    <li>First name: {{student.attributes.field_first_name}}</li>
+    <li>Last name: {{student.attributes.name}}</li>
+    <li *ngIf="courses">Courses:
+      <ul >
+        <li *ngFor="let course of courses"><a routerLink="/courses/{{course.attributes.uuid}}">{{course.attributes.name}}</a></li>
+      </ul>
+    </li>
+  </ul>
+  <button (click)="editMode = true">edit</button>
+  <button (click)="goBack()">back</button>
+</div>
+<div *ngIf="editMode">
+  <ul *ngIf="student">
+      <li>First name: <input [(ngModel)]="student.attributes.field_first_name" placeholder="first name"></li>
+      <li>Last name: <input [(ngModel)]="student.attributes.name" placeholder="name"></li>
+  </ul>
+  <button (click)="cancel()">cancel</button>
+  <button (click)="updateStudent()">save</button>
+
+</div>

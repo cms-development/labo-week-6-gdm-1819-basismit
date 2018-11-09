@@ -1,0 +1,44 @@
+<p>
+  instructor-detail works!
+</p>
+<div *ngIf="!editMode">
+  <ul *ngIf="instructor">
+    <li>First name: {{instructor.attributes.field_first_name}}</li>
+    <li>Last name: {{instructor.attributes.name}}</li>
+    <li>Rank: {{getRankName(instructor.attributes.field_academic_rank)}}</li>
+    <li>Titles:
+      <ul>
+        <li *ngFor="let title of instructor.attributes.field_academic_title">{{getTitleName(title)}}</li>
+      </ul>
+    </li>
+    <li>Courses:
+      <ul *ngIf="courses">
+        <li *ngFor="let course of courses">{{course.attributes.name}}</li>
+      </ul>
+    </li>
+  </ul>
+  <button (click)="editMode = true">edit</button>
+  <button (click)="goBack()">back</button>
+</div>
+<div *ngIf="editMode">
+  <ul *ngIf="instructor">
+      <li>First name: <input [(ngModel)]="instructor.attributes.field_first_name" placeholder="first name"></li>
+      <li>Last name: <input [(ngModel)]="instructor.attributes.name" placeholder="name"></li>
+      <li>Rank:
+        <select [(ngModel)]="instructor.attributes.field_academic_rank">
+          <option *ngFor="let rank of allRanks" [ngValue]="rank.value">{{rank.name}}</option>
+        </select>
+        <li>Current titles:
+            <ul>
+              <li *ngFor="let title of instructor.attributes.field_academic_title; trackBy: trackTitle"> {{getTitleName(title)}} <button (click)=removeTitle(title)>remove</button></li>
+            </ul>
+          </li>
+          <li>Other titles:
+            <ul *ngIf="titlesLeft">
+              <li *ngFor="let title of titlesLeft; trackBy: trackTitle"> {{ title.name }} <button (click)=addTitle(title.value)>add</button></li>
+            </ul>
+          </li>
+  </ul>
+  <button (click)="cancel()">cancel</button>
+  <button (click)="updateInstructor()">save</button>
+</div>

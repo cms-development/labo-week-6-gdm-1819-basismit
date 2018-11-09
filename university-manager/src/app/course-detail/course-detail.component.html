@@ -1,0 +1,42 @@
+<p>
+  course-detail works!
+</p>
+<div *ngIf="!editMode">
+  <ul *ngIf="course">
+    <li>Name: {{course.attributes.name}}</li>
+    <li>Institution: {{course.attributes.field_academic_institution}}</li>
+    <li *ngIf="instructor">Instructor: {{instructor.attributes.field_first_name}} {{instructor.attributes.name}}</li>
+    <li>Students:
+      <ul *ngIf="students">
+        <li *ngFor="let student of students trackBy: trackStudent"> {{student.attributes.field_first_name}}{{student.attributes.name}} </li>
+      </ul>
+    </li>
+  </ul>
+  <button (click)="editMode = true">edit</button>
+  <button (click)="goBack()">back</button>
+</div>
+<div *ngIf="editMode">
+  <ul *ngIf="course">
+    <li>Name:<input [(ngModel)]="course.attributes.name" placeholder="name"></li>
+    <li>Institution:<input [(ngModel)]="course.attributes.field_academic_institution" placeholder="institution"></li>
+    <li>Instructor: <select [(ngModel)]="instructorSelect" (change)="instructorChange()">
+      <option *ngFor="let newInstructor of allInstructors" [ngValue]="newInstructor.id">
+        {{newInstructor.attributes.field_first_name}} {{newInstructor.attributes.name}}
+      </option>
+    </select></li>
+    <li>Current students:
+      <ul *ngIf="students">
+        <li *ngFor="let student of students; trackBy: trackStudent"> {{student.attributes.field_first_name}}{{student.attributes.name}} <button (click)=removeStudent(student)>remove</button></li>
+      </ul>
+    </li>
+    <li>All students:
+      <ul *ngIf="avStudents">
+        <li *ngFor="let avstudent of avStudents; trackBy: trackStudent"> {{  avstudent.attributes.field_first_name}}{{ avstudent.attributes.name}} <button (click)=addStudent(avstudent)>add</button></li>
+      </ul>
+    </li>
+  </ul>
+  <button (click)="updateCourse()">save</button>
+  <button (click)="cancel()">cancel</button>
+</div>
+
+
